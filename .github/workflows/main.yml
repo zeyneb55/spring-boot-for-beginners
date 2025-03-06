@@ -36,7 +36,7 @@ jobs:
           context: .   #here we specify the path for our dockerfile since we r in the root and so does our dockerfile so we put a .
           dockerfile: Dockerfile  #name of our dockerfile
           push: false  #we put it in false because in this step we want to check if we can build this image or not
-          tags:  ${{ secrets.DOCKER_HUB_USERNAME }} /spring-boot-for-beginners:latest #  dockerhub username 
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:${{ steps.date.outputs.timestamp }} #  dockerhub username 
           #now we need to login to dockerhub
 
       - name: Login to Docker Hub
@@ -53,7 +53,7 @@ jobs:
           context: .   #here we specify the path for our dockerfile since we r in the root and so does our dockerfile so we put a .
           dockerfile: Dockerfile  #name of our dockerfile
           push: true  #we put it in true because in this step we want to check if we want to build it 
-          tags:  ${{ secrets.DOCKER_HUB_USERNAME }} /spring-boot-for-beginners:latest #  dockerhub username 
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:${{ steps.date.outputs.timestamp }} #  dockerhub username 
 
 
           
