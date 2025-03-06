@@ -47,7 +47,7 @@ jobs:
 
 
       - name: Push to docker
-        uses: actions/build-push-action@v2
+        uses:  docker/build-push-action@v4
         with:
           context: .   #here we specify the path for our dockerfile since we r in the root and so does our dockerfile so we put a .
           dockerfile: Dockerfile  #name of our dockerfile
