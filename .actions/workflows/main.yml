@@ -9,7 +9,7 @@ on:
 
   jobs:
     build-deploy:
-    name: Buildd and deploy spring boot for beginners
+    name: Build and deploy spring boot for beginners
     runs-on : ubuntu-latest
     steps:
       - name: checkout code
@@ -31,7 +31,7 @@ on:
 # ✅ test → Runs unit tests defined in the Maven project.
 # ✅ --file pom.xml → Explicitly specifies the pom.xml file (the Maven project configuration file).
 
-      - name : Build the app
+      - name : Build the application
         run : | #so that i can run mutliple cmds
           mvn clean
           mvn -B package --file pom.xml
