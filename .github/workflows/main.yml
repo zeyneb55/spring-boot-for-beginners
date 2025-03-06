@@ -1,0 +1,36 @@
+name: Build & Deploy Spring App
+
+on:
+  push:
+    branches:
+      - main  # ✅ Fixed spacing issue
+
+jobs:
+  build-deploy:
+    name: Build and Deploy Spring Boot for Beginners
+    runs-on: ubuntu-latest  # ✅ Removed extra spaces
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # ✅ Since this project uses JDK 17, install Java 17 in the runner
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: 17
+
+      - name: Run Unit Tests
+        run: mvn -B test --file pom.xml
+
+      - name: Build the Application
+        run: |  # ✅ Fixed indentation of multi-line command
+          mvn clean
+          mvn -B package --file pom.xml
+
+
+# ✅ mvn → Calls Apache Maven, a popular build automation tool for Java projects.
+# ✅ -B → Runs Maven in batch mode (non-interactive) to prevent prompts from interrupting CI/CD.
+# ✅ test → Runs unit tests defined in the Maven project.
+# ✅ --file pom.xml → Explicitly specifies the pom.xml file (the Maven project configuration file).
